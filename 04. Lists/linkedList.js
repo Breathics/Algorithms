@@ -24,6 +24,12 @@ var LinkedList = function() {
 
 LinkedList.prototype.insert = function(index, value) {
   // ...
+    var currentIndex = 0;
+    var currentNode = this.head;
+    while(currentIndex != index && currentNode != null
+        currentNode = currentNode.next;
+        currentIndex++;
+    }
 };
 
 LinkedList.prototype.remove = function(index) {
@@ -45,4 +51,3 @@ LinkedList.prototype.find = function(value) {
 LinkedList.prototype.contains = function(value) {
   // ...
 };
-
