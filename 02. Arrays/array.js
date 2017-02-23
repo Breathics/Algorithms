@@ -157,9 +157,22 @@ var a5 = [4, 3, 8, 8, 6, 9, 10, 12, 10, 9, 0, 5, 16, 2];
 function findNthLastOdd(a, n) {
   // return nth last add
   //
-    for (var i = 1; i < a.length; i+=2){
-        if
+    var oddCount = 0;
+    var index = a.length-1;
+    // for (var index=a.length-1; index >=0; index--) **** Using a for loop
+    // while(index >=0 & oddCount != n){  **** Using a while loop
+    while(index >=0){
+        if (a[index] % 2 === 1){
+            oddCount++;
+            if (oddCount === n){
+                return index;
+            }
+        };
+        index--;
     }
+    return null;
+
+
 }
 
 console.log("findNthLastOdd(a5, 1): " + (findNthLastOdd(a5, 1) === 11));
