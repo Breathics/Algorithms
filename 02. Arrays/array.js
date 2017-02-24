@@ -186,6 +186,12 @@ var a6 = [0, 1, 2, 3, 4, 5, 10, 15, 23, 54, 22, 1, 8, 4, 2, 2, 2, 0, 1];
 
 function getAverageOfRange(a, start, end) {
   // return average of values selected from a subarray
+    total = 0;
+    for (var i = start; i < end+1; i++){
+        total += a[i];
+    }
+    return total/((end - start) + 1);
+
 }
 
 console.log("getAverageOfRange(a6, 5, 9): " + (getAverageOfRange(a6, 5, 9) === 21.4));
