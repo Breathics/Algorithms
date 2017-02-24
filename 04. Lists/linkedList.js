@@ -24,12 +24,7 @@ var LinkedList = function() {
 
 LinkedList.prototype.insert = function(index, value) {
   // ...
-    var currentIndex = 0;
-    var currentNode = this.head;
-    while(currentIndex != index && currentNode != null){
-        currentNode = currentNode.next;
-        currentIndex++;
-    }
+
     var nextNode = currentNode.next;
     var newNode = new LinkedListNode(value, null);
     newNode.next = nextNode;
@@ -51,9 +46,12 @@ LinkedList.prototype.set = function(index, value) {
 
 LinkedList.prototype.find = function(value) {
   // ...
-    var nodeIndex = 0;
-    var currentNode = this.head;
-    while (nodeIndex != index)
+      var currentIndex = 0;
+      var currentNode = this.head;
+      while(currentIndex != index && currentNode != null){
+          currentNode = currentNode.next;
+          currentIndex++;
+      }
 
 };
 
