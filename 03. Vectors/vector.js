@@ -6,9 +6,9 @@
 // NOTE: Must implement from scratch, cannot create a direct wrapper around built-in functionality
 //
 // [ ] implement a Vector class with the following functions
-// [ ] .insert() function that takes an index and value to insert
-// [ ] .add() function to append a value to the end of the array
-// [ ] .remove() function to remove whatever value at index
+// [x] .insert() function that takes an index and value to insert
+// [x] .add() function to append a value to the end of the array
+// [x] .remove() function to remove whatever value at index
 // [ ] .get() function to return value at index
 // [ ] .set() function to set value at index
 //
@@ -24,6 +24,29 @@ var Vector = function(initialCapacity, maxCapacity) {
 
 Vector.prototype.insert = function(index, value) {
   // ...
+    this.newArray = [];
+    if (index === this.storage.length) {
+        this.storage[this.storage.length] = value;
+        return;
+    }
+    if (index > this.storage.length - 1) {
+        for (var i = this.storage.length; i < index; i++){
+            this.storage[i] = undefined;
+            this.storage[index] = value;
+        }
+        return;
+    }
+    if (index < this.storage.length - 1){
+        for (var i = 0; i < index; i++){
+            this.newArray[i] = this.storage[i];
+        }
+        this.newArray[index] = value;
+        this.length++;
+        for (var i = index, j = index + 1; i < this.storage.length; i++,j++){
+            this.newArray[j] = this.storage[i];
+        }
+        this.storage = this.newArray;
+    }
 
 };
 
@@ -36,13 +59,15 @@ Vector.prototype.add = function(value) {
 Vector.prototype.remove = function(index) {
   // ...
     this.newArray = [];
-    for (var i = 0,j=0; i < this.storage.length; i++,j++){
-        if(i===index){
-            j++;
-        }
-        this.newArray[i] = this.storage[j];
-    }
-    /*******************/
+    // for (var i = 0,j=0; i < this.storage.length-1; i++,j++) {
+    //     if(i===index){
+    //         j++;
+    //     }
+    //     this.newArray[i] = this.storage[j];
+    // }
+    /*****************************/
+    // Brute force solution below
+    /*****************************/
     for (var i = 0; i < index; i++){
         this.newArray[i] = this.storage[i];
     }
@@ -50,14 +75,26 @@ Vector.prototype.remove = function(index) {
         this.newArray[i] = this.storage[i];
     }
     this.storage = this.newArray;
+    this.length--;
 };
 
 Vector.prototype.get = function(index) {
   // ...
+    for (var i = 0; i < this.storage.length; i++){
+        if (index === i){
+            return this.storage[i];
+        }
+    }
 };
 
 Vector.prototype.set = function(index, value) {
   // ...
+    if (index > this.storage.length - 1) {
+        for (var i = this.storage.length; i < index; i++){
+            this.storage[i] = undefined;
+        }
+    }
+    this.storage[index] = value;
 };
 
 
