@@ -33,7 +33,7 @@ LinkedList.prototype.insert = function(index, value) {
     var nextNode = currentNode.next;
     var newNode = new LinkedListNode(value, null);
     newNode.next = nextNode;
-    currentNode = nextNode;
+    currentNode.next = newNode.data;
 
 };
 
