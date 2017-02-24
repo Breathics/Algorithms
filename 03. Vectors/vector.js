@@ -15,8 +15,8 @@
 // [ ] .contains() function to return true/false whether a given value exists in the Vector
 //
 var Vector = function(initialCapacity, maxCapacity) {
-  this.storage = ...;
-  this.capacity = initialcapacity || 16;  // Default to array size 16
+  this.storage = [];
+  this.capacity = initialCapacity || 16;  // Default to array size 16
   this.max = maxCapacity || 1 << 24;      // Default to max Vector size 16,777,216
   this.length = 0;
 };
@@ -24,14 +24,32 @@ var Vector = function(initialCapacity, maxCapacity) {
 
 Vector.prototype.insert = function(index, value) {
   // ...
+
 };
 
 Vector.prototype.add = function(value) {
   // ...
+    this.storage[this.length] = value;
+    this.length++;
 };
 
 Vector.prototype.remove = function(index) {
   // ...
+    this.newArray = [];
+    for (var i = 0,j=0; i < this.storage.length; i++,j++){
+        if(i===index){
+            j++;
+        }
+        this.newArray[i] = this.storage[j];
+    }
+    /*******************/
+    for (var i = 0; i < index; i++){
+        this.newArray[i] = this.storage[i];
+    }
+    for (var i = index+1; i < this.storage.length; i++){
+        this.newArray[i] = this.storage[i];
+    }
+    this.storage = this.newArray;
 };
 
 Vector.prototype.get = function(index) {
