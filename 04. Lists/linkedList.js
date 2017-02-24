@@ -24,7 +24,12 @@ var LinkedList = function() {
 
 LinkedList.prototype.insert = function(index, value) {
   // ...
-
+    var currentIndex = 0;
+    var currentNode = this.head;
+    while(currentIndex != index && currentNode != null){
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
     var nextNode = currentNode.next;
     var newNode = new LinkedListNode(value, null);
     newNode.next = nextNode;
