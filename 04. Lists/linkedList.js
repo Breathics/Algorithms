@@ -61,18 +61,22 @@ LinkedList.prototype.get = function (index) {
 
 LinkedList.prototype.set = function(index, value) {
   // ...
-    var currentIndex = 0;
-    var currentIndex
+  this.currentIndex = 0;
+  this.currentNode = this.head;
+  while(this.currentIndex != index+1){
+      this.currentNode = this.currentNode.next;
+      this.currentIndex++;
+  }
+  this.currentNode.data = value;
 };
 
 LinkedList.prototype.find = function(value) {
-  // ...
-      var currentIndex = 0;
-      var currentNode = this.head;
-      while(currentIndex != index && currentNode != null){
+  //
+      this.currentNode = this.head;
+      while(currentNode.data != value && currentNode.next != null){
           currentNode = currentNode.next;
-          currentIndex++;
       }
+      return currentNode.data;
 
 };
 
