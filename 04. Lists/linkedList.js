@@ -1,7 +1,7 @@
 
 // [ ] Implement LinkedList class
-// [ ] .insert() function to insert data at position (0 = Head, null = Tail, other = middle somewhere)
-// [ ] .remove() function to remove data at position (0 = Head, empty = Tail, other = middle somewhere)
+// [x] .insert() function to insert data at position (0 = Head, null = Tail, other = middle somewhere)
+// [x] .remove() function to remove data at position (0 = Head, empty = Tail, other = middle somewhere)
 // [ ] .get() function to return data at position indicated
 // [ ] .set() function to change existing data at position indicated
 // [ ] .find() function to return first node containing the value indicated
@@ -24,29 +24,45 @@ var LinkedList = function() {
 
 LinkedList.prototype.insert = function(index, value) {
   // ...
-    var currentIndex = 0;
-    var currentNode = this.head;
-    while(currentIndex != index && currentNode != null){
-      currentNode = currentNode.next;
-      currentIndex++;
+    this.currentIndex = 0;
+    this.currentNode = this.head;
+    while(this.currentIndex != index && this.currentNode != null){
+      this.currentNode = this.currentNode.next;
+      this.currentIndex++;
     }
-    var nextNode = currentNode.next;
-    var newNode = new LinkedListNode(value, null);
-    newNode.next = nextNode;
-    currentNode.next = newNode.data;
+    this.nextNode = this.currentNode.next;
+    this.newNode = new LinkedListNode(value, null);
+    this.newNode.next = this.nextNode;
+    this.currentNode.next = this.newNode.data;
 
 };
 
 LinkedList.prototype.remove = function(index) {
   // ...
+    this.currentIndex = 0;
+    this.currentNode = this.head;
+    while(this.currentIndex != index && this.currentNode != null){
+        this.currentNode = this.currentNode.next;
+        this.currentIndex++;
+    }
+    this.currentNode.next = this.currentNode.next.next;
 };
 
 LinkedList.prototype.get = function (index) {
-  // ...
+  //
+    this.currentIndex = 0;
+    this.currentNode = this.head;
+    while(this.currentIndex != index+1){
+        this.currentNode = this.currentNode.next;
+        this.currentIndex++;
+    }
+    return this.currentNode.data;
 };
 
 LinkedList.prototype.set = function(index, value) {
   // ...
+    var currentIndex = 0;
+    var currentIndex
 };
 
 LinkedList.prototype.find = function(value) {
