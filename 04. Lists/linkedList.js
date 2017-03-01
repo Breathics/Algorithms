@@ -66,17 +66,19 @@ var LinkedList = function() {
 
 LinkedList.prototype.insert = function(index, value) {
   // ...
-    this.currentIndex = 0;
-    this.currentNode = this.head;
-    while(this.currentIndex != index && this.currentNode != null){
-      this.currentNode = this.currentNode.next;
-      this.currentIndex++;
-    }
-    this.nextNode = this.currentNode.next;
-    this.newNode = new LinkedListNode(value, null);
-    this.newNode.next = this.nextNode;
-    this.currentNode.next = this.newNode.data;
-
+//    Account for null
+  //  Account for something in list
+  //  Inserting before head, insert after tail
+     var currentIndex = 0;
+     var currentNode = this.head;
+     while(currentIndex != index && currentNode != null){
+       currentNode = currentNode.next;
+       currentIndex++;
+     }
+     var nextNode = this.currentNode;
+     var newNode = new LinkedListNode(value, null);
+     newNode.next = nextNode;
+     currentNode.next = newNode.data;
 };
 
 LinkedList.prototype.remove = function(index) {
